@@ -7,12 +7,14 @@ const calcDisplay = document.getElementById('calculations')
 
 calculateBtn.addEventListener('click', calculateResults)
 
-const mpgVal = mpgText.value
-const speedVal = speedText.value
-const distVal = distText.value
-const gasVal = gasText.value
-
 function calculateResults() {
-    let totalDist = speedVal / distVal
-    console.log(totalDist.toFixed(2))
+    const mpgVal = parseFloat(mpgText.value)
+    const speedVal = parseFloat(speedText.value)
+    const distVal = parseFloat(distText.value)
+    const gasVal = parseFloat(gasText.value)
+
+    const totalTime = (distVal / speedVal)
+    const totalCost = (distVal / mpgVal) * gasVal
+
+    calcDisplay.innerHTML = `Total Time: ${totalTime.toFixed(2)} hours<br>Total Cost: $${totalCost.toFixed(2)}`
 }
